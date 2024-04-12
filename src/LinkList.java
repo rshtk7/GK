@@ -1,42 +1,35 @@
 public class LinkList {
     Node head=null;
-    Node tail=null;
 
-    public void removeNode(Node node) {
-        if(node.prev==null){
-            node = node.next;
-            head = node;
-            return;
+    public void removeNode(Node nodeToDelete) {
+        if (head == null || nodeToDelete == null) return;
+
+        if (nodeToDelete == head) {
+            head = head.next;
         }
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
+        if (nodeToDelete.prev != null) {
+            nodeToDelete.prev.next = nodeToDelete.next;
+        }
+        if (nodeToDelete.next != null) {
+            nodeToDelete.next.prev = nodeToDelete.prev;
+        }
+        nodeToDelete.prev = null;
+        nodeToDelete.next = null;
 
     }
 
     public void addNode(Node node) {
-        Node temp=head;
-        if(head==tail){
-            if(head==null){
-                head = node;
-                tail = node;
-            }
-            else{
-                tail.next = node;
-                tail = tail.next;
-            }
+        if (head == null) {
+            head = node;
+            return;
         }
-        else{
-            tail = tail.next
+
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
         }
-//        if(temp==null){
-//            head = node;
-//            return;
-//        }
-//        while(temp.next!=null){
-//            temp  = temp.next;
-//        }
-//        temp.next = node;
-//        node.prev = temp;
+        current.next = node;
+        node.prev = current;
     }
 
     public int getFirstElement() {

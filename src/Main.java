@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) {
-        int[] arr = new int[]{1 ,2 ,3, 1  , 4 ,2,3};
+        int[] arr = new int[]{1 ,2 ,3, 1, 4 ,2,3,4};
         System.out.println("first non repeating no: "+firstNonRepeatingNumber(arr));
     }
 
